@@ -1,7 +1,5 @@
 package co.com.softlond.api.Plantilla;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -28,8 +26,6 @@ public class PlantillaHandler {
                 .flatMap(plantilla -> ServerResponse.ok().bodyValue(plantilla))
                 .switchIfEmpty(ServerResponse.noContent().build())
                 .onErrorResume(error -> ServerResponse.badRequest().bodyValue(error.getMessage()));
-
     }
-
 
 }

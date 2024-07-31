@@ -10,11 +10,13 @@ import reactor.core.publisher.Mono;
 @Repository
 public class PlantillaGatewaysImpl implements PlantillaGateways {    
 
+    @Autowired
+    private ReactivePlantillaMongoRepository reactivePlantillaMongoRepository;
+
     @Override
     public Mono<PlantillaModel> savePlantilla(PlantillaModel plantilla) {
-        System.out.println("Desde PlantillaGatewaysImpl.savePlantilla()");
-        System.out.println(plantilla.getFechaActualizacion());
-        throw new UnsupportedOperationException("Unimplemented method 'savePlantilla'");
+        return reactivePlantillaMongoRepository.save(PlantillaMapper.toCollection(plantilla))
+                .map(plantillaEntity -> PlantillaMapper.toModel(plantillaEntity));
     }
     
 }
