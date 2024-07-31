@@ -8,10 +8,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import org.springframework.web.reactive.function.server.RouterFunctions;
 
 @Configuration
-public class PlantillaRoutes {
+public class PlantillaRoutesRest {
     
     @Bean
     public RouterFunction<ServerResponse> plantillaRoutes(PlantillaHandler plantillaHandler) {
