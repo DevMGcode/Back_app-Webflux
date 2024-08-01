@@ -3,9 +3,7 @@ package co.com.softlond.mongo.Config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 
-import co.com.softlond.mongo.Plantilla.ReactivePlantillaMongoRepository;
-
 @Configuration
-@EnableReactiveMongoRepositories(basePackageClasses = ReactivePlantillaMongoRepository.class)
+@EnableReactiveMongoRepositories(basePackages = "co.com.softlond.mongo")
 public class ReactiveMongoConfig {
 }
