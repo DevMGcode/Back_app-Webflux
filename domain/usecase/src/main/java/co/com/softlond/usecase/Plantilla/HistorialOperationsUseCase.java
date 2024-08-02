@@ -1,5 +1,7 @@
 package co.com.softlond.usecase.Plantilla;
 
+import java.time.Duration;
+
 import org.springframework.stereotype.Service;
 
 import co.com.softlond.model.HistorialModel;
@@ -15,7 +17,8 @@ public class HistorialOperationsUseCase {
     }
 
     public Mono<HistorialModel> saveHistorial(HistorialModel historial) {
-        return historialGateways.saveHistorial(historial);
+        return Mono.delay(Duration.ofSeconds(6))
+        .then(historialGateways.saveHistorial(historial));
     }
 
     public Mono<HistorialModel> getHistorial() {
