@@ -25,4 +25,6 @@ public class HistorialGatewaysImpl implements HistorialGateways {
         Mono<HistorialCollections> historial = reactiveHistorialMongoRepository.findAll().next();
         return historial.map(historialEntity -> HistorialMapper.toModel(historialEntity));
     }
+
+
 }

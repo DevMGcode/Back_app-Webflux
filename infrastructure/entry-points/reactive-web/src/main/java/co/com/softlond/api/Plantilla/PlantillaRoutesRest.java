@@ -14,6 +14,10 @@ public class PlantillaRoutesRest {
     
     @Bean
     public RouterFunction<ServerResponse> plantillaRoutes(PlantillaHandler plantillaHandler) {
-        return route(POST("/api/plantilla/save"), plantillaHandler::savePlantilla);
+        return route(POST("/api/plantilla/save"), plantillaHandler::savePlantilla)
+                .andRoute(GET("/api/plantilla/{id}"), plantillaHandler::getPlantillaById)
+                .andRoute(GET("/api/plantillas"), plantillaHandler::getAllPlantillas)
+                .andRoute(PUT("/api/plantilla/{id}"), plantillaHandler::updatePlantilla)
+                .andRoute(DELETE("/api/plantilla/{id}"), plantillaHandler::deletePlantilla);
     }
 }

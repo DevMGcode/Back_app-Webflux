@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import co.com.softlond.model.PlantillaModel;
 import co.com.softlond.model.gateways.PlantillaGateways;
 import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
 @Repository
 public class PlantillaGatewaysImpl implements PlantillaGateways {    
@@ -18,5 +19,23 @@ public class PlantillaGatewaysImpl implements PlantillaGateways {
         return reactivePlantillaMongoRepository.save(PlantillaMapper.toCollection(plantilla))
                 .map(plantillaEntity -> PlantillaMapper.toModel(plantillaEntity));
     }
+
+    @Override
+    public Mono<PlantillaModel> getPlantillaById(String id) {
+        return reactivePlantillaMongoRepository.findById(id)
+                .map(PlantillaMapper::toModel);
+    }
+
+    @Override
+    public Flux<PlantillaModel> getAllPlantillas() {
+        return reactivePlantillaMongoRepository.findAll()
+                .map(PlantillaMapper::toModel);
+    }
+
+    @Override
+    public Mono<Void> deletePlantilla(String id) {
+        return reactivePlantillaMongoRepository.deleteById(id);
+    }
+
     
 }
